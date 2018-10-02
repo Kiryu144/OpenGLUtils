@@ -197,4 +197,8 @@ bool GLShader::operator<(const GLShader &other) const {
     return other.getProgramID() < getProgramID();
 }
 
+void GLShader::bind() {
+    glUseProgram(program);
+}
+
 

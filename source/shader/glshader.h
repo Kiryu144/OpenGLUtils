@@ -47,6 +47,8 @@ public:
     GLuint linkShader(GLuint vertex, GLuint fragment, GLuint geometry);
     GLuint linkShader(GLuint vertex, GLuint fragment);
 
+    void bind();
+
     GLuint getProgramID() const;
 
     GLint getCachedUniformLocation(const char* uniform) const;
