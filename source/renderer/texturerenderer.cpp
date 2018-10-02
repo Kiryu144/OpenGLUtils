@@ -12,8 +12,7 @@ TextureRenderer::TextureRenderer(SDL_Window* sdlWindow, GLShader *shader) {
     vertexData.push_back(glm::vec4(0, 1, 0, 1));
     vertexData.push_back(glm::vec4(1, 1, 1, 1));
     vertexData.push_back(glm::vec4(1, 0, 1, 0));
-
-    buffer = GLAttributeBuffer<glm::vec4>(vertexData);
+    buffer.upload(vertexData);
 
     //TODO: Implement auto-updating of width/height and mat4
     int width, height;
@@ -42,7 +41,6 @@ void TextureRenderer::addToRenderList(GLTexture* texture, std::vector<Transform2
 }
 
 void TextureRenderer::render() {
-    glGetError();
     if(renderBatch.size() > 0){
         shader->bind();
         this->shader->setUniform("projection", projection);
