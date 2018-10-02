@@ -6,6 +6,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
 #include <glm/common.hpp>
+#include <glm/vec4.hpp>
 #include <string>
 #include <sstream>
 #include <fstream>
