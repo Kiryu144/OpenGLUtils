@@ -46,7 +46,9 @@ public:
     }
 
     ~GLAttributeBuffer(){
-        glDeleteBuffers(1, &vboID);
+        if(vboID > 1){
+            glDeleteBuffers(1, &vboID);
+        }
     }
 
     void bind(GLuint location){
