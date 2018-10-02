@@ -44,3 +44,17 @@ try{
     std::cerr << exception.what() << std::endl;
 }
 ```
+
+### GLTexture
+Uploads texture data to the GPU.
+
+The GLTexture object represents the Data in the GPU, **so if it's deconstructor is called, the data is removed from the GPU!**
+
+```
+try{
+    GLTexture* texture1 = new GLTexture("./image1.png");
+    GLTexture* texture2 = new GLTexture("./image2.png");
+}catch(GLTextureException error){
+    std::cerr << error.what() << std::endl;
+}
+```
