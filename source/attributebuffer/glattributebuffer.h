@@ -23,32 +23,37 @@ class GLAttributeBuffer {
 private:
     GLuint vboID;
 
-    void upload(T* data, size_t lenght){
-        glGenBuffers(1, &vboID);
-        glBindBuffer(GL_ARRAY_BUFFER, vboID);
-        glBufferData(GL_ARRAY_BUFFER, lenght * sizeof(T), data, GL_STATIC_DRAW);
-    }
+
 public:
-    GLAttributeBuffer(){}
+    GLAttributeBuffer(){
+        vboID = -1;
+    }
 
     GLAttributeBuffer(T* data, size_t lenght){
-        if(lenght == 0 || data == nullptr){
-            throw GLAttributeBufferException("Provided data lenght is zero!");
-        }
         upload(data, lenght);
     }
 
     GLAttributeBuffer(std::vector<T>& data){
-        if(data.size() == 0){
-            throw GLAttributeBufferException("Provided data lenght is zero!");
-        }
         upload(&data.at(0), data.size());
     }
 
     ~GLAttributeBuffer(){
-        if(vboID > 1){
+        if(vboID != -1){
             glDeleteBuffers(1, &vboID);
         }
+    }
+
+    void upload(T* data, size_t lenght){
+        if(lenght == 0 || data == nullptr){
+            throw GLAttributeBufferException("Provided data lenght is zero!");
+        }
+        glGenBuffers(1, &vboID);
+        glBindBuffer(GL_ARRAY_BUFFER, vboID);
+        glBufferData(GL_ARRAY_BUFFER, lenght * sizeof(T), data, GL_STATIC_DRAW);
+    }
+
+    void upload(std::vector<T>& data){
+        upload(&data.at(0), data.size());
     }
 
     void bind(GLuint location){
