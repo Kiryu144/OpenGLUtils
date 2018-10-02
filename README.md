@@ -5,7 +5,7 @@ Currently there is only support for vertex, fragment and geometry shaders.
 
 The GLShader object represents the Program in the GPU, **so if it's deconstructor is called, the program is removed from the GPU!**
 
-```
+```C++
 try{
     GLShader* shader = new GLShader("./compile_test.vert", "./compile_test.frag", "./compile_test.geom");
     shader->bind();
@@ -21,7 +21,7 @@ Uploads attribute data to the GPU.
 
 The GLAttributeBuffer object represents the Data in the GPU, **so if it's deconstructor is called, the data is removed from the GPU!**
 
-```
+```C++
 try{
     glm::vec3* vertices = new glm::vec3[6];
     vertices[0] = glm::vec3(0, 1, 0);
@@ -51,7 +51,7 @@ Uploads texture data to the GPU.
 
 The GLTexture object represents the Data in the GPU, **so if it's deconstructor is called, the data is removed from the GPU!**
 
-```
+```C++
 try{
     GLTexture* texture1 = new GLTexture("./image1.png");
     GLTexture* texture2 = new GLTexture("./image2.png");
@@ -64,7 +64,7 @@ try{
 Holds the position, rotation & size.
 Is useful for getting the model matrix for opengl
 
-```
+```C++
 //transform2D(glm::vec2 position, float rotation (normalized), glm::vec2 size)
 Transform2D transform2D(glm::vec2(300, 300), 0.25, glm::vec2(100, 100));
 transform.setOrigin(glm::vec2(0.5f, 0.5f)); //Sets the origin exactly in the center
