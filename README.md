@@ -58,3 +58,14 @@ try{
     std::cerr << error.what() << std::endl;
 }
 ```
+
+### Transform2D
+Holds the position, rotation & size.
+Is useful for getting the model matrix for opengl
+
+```
+//transform2D(glm::vec2 position, float rotation (normalized), glm::vec2 size)
+Transform2D transform2D(glm::vec2(300, 300), 0.25, glm::vec2(100, 100));
+transform.setOrigin(glm::vec2(0.5f, 0.5f)); //Sets the origin exactly in the center
+transform.getMatrix(); //Gets the model matrix
+```
