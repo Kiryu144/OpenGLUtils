@@ -29,6 +29,8 @@ private:
         glBufferData(GL_ARRAY_BUFFER, lenght * sizeof(T), data, GL_STATIC_DRAW);
     }
 public:
+    GLAttributeBuffer(){}
+
     GLAttributeBuffer(T* data, size_t lenght){
         if(lenght == 0 || data == nullptr){
             throw GLAttributeBufferException("Provided data lenght is zero!");
