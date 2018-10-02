@@ -50,7 +50,7 @@ public:
     void bind(GLuint location){
         glEnableVertexAttribArray(location);
         glBindBuffer(GL_ARRAY_BUFFER, vboID);
-        glVertexAttribPointer(0, sizeof(T)/sizeof(float), GL_FLOAT, GL_FALSE, 0, (void *) 0);
+        glVertexAttribPointer(location, sizeof(T)/sizeof(float), GL_FLOAT, GL_FALSE, 0, (void *) 0);
     }
 };
 
