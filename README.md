@@ -15,7 +15,8 @@ try{
 }
 ```
 
-### GLAttributeBuffer<>
+## GLAttributeBuffer<>
+
 Uploads attribute data to the GPU.
 
 The GLAttributeBuffer object represents the Data in the GPU, **so if it's deconstructor is called, the data is removed from the GPU!**
@@ -45,7 +46,7 @@ try{
 }
 ```
 
-### GLTexture
+## GLTexture
 Uploads texture data to the GPU.
 
 The GLTexture object represents the Data in the GPU, **so if it's deconstructor is called, the data is removed from the GPU!**
@@ -59,7 +60,7 @@ try{
 }
 ```
 
-### Transform2D
+## Transform2D
 Holds the position, rotation & size.
 Is useful for getting the model matrix for opengl
 
