@@ -43,7 +43,7 @@ void Transform2D::updateMatricesWhenNeeded() {
 
         matrix = glm::mat4(1.0f);
         matrix = glm::translate(matrix, glm::vec3(position + realRotationOrigin, 0.0f));
-        matrix = glm::rotate(matrix, rotation, glm::vec3(0, 0, 1));
+        matrix = glm::rotate(matrix, rotation*float(M_PI*2), glm::vec3(0, 0, 1));
         matrix = glm::translate(matrix, glm::vec3(-realRotationOrigin, 0.0f));
         matrix = glm::scale(matrix, glm::vec3(size, 1.0f));
         updateNeeded = 0;

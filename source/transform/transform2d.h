@@ -17,6 +17,8 @@
 #define SCALE       0x4
 #define PIVOT       0x8
 
+//TODO: Resize around pivot
+
 class Transform2D {
 private:
     glm::vec2 position;
