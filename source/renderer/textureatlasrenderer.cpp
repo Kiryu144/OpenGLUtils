@@ -43,7 +43,6 @@ void TextureAtlasRenderer::addToRenderList(unsigned int index, std::vector<Trans
 }
 
 void TextureAtlasRenderer::render() {
-    glGetError();
     if(renderBatch.size() > 0){
         shader->bind();
         this->shader->setUniform("projection", projection);
@@ -52,7 +51,7 @@ void TextureAtlasRenderer::render() {
     }else{
         return;
     }
-    glGetError();
+
     for(auto it = renderBatch.begin(); it != renderBatch.end(); it++){
         unsigned int index = it->first;
         shader->setUniform("atlasdata", glm::vec2(index, rows));
