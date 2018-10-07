@@ -1,6 +1,10 @@
 /* Created by David Klostermann on 02.10.2018. */
 #include "gltexture.h"
 
+GLTexture::GLTexture() {
+    textureID = -1;
+}
+
 GLTexture::GLTexture(const char *filePath) {
     SDL_Surface* surface = IMG_Load(filePath);
     if(surface == nullptr){
@@ -12,6 +16,16 @@ GLTexture::GLTexture(const char *filePath) {
         mode = GL_RGBA;
     }
     createGLImage(static_cast<glm::vec4 *>(surface->pixels), surface->w, surface->h, mode);
+    SDL_FreeSurface(surface);
+}
+
+GLTexture::GLTexture(SDL_Surface *surface) {
+    int mode = GL_RGB;
+    if(surface->format->BytesPerPixel == 4) {
+        mode = GL_RGBA;
+    }
+    createGLImage(static_cast<glm::vec4 *>(surface->pixels), surface->w, surface->h, mode);
+    SDL_FreeSurface(surface);
 }
 
 void GLTexture::createGLImage(glm::vec4 *imageData, int width, int height, GLenum mode) {
@@ -27,10 +41,16 @@ void GLTexture::createGLImage(glm::vec4 *imageData, int width, int height, GLenu
 }
 
 GLTexture::~GLTexture() {
-    glDeleteTextures(1, &textureID);
+    if(textureID != -1){
+        glDeleteTextures(1, &textureID);
+    }
 }
 
 void GLTexture::bind() {
     glActiveTexture(GL_TEXTURE0);
     glBindTexture(GL_TEXTURE_2D, textureID);
 }
+
+
+
+

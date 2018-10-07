@@ -30,7 +30,9 @@ private:
 
     void createGLImage(glm::vec4* imageData, int width, int height, GLenum mode);
 public:
+    GLTexture();
     GLTexture(const char* filePath);
+    GLTexture(SDL_Surface* surface);
     ~GLTexture();
 
     void bind();
